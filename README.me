@@ -1,0 +1,50 @@
+# Crud-Java-DB  
+Sistema Java para gerenciamento de dados (CRUD) usando MySQL e interface gráfica.
+
+## 🧾 Visão Geral  
+Este projeto implementa operações de **Create, Read, Update e Delete (CRUD)** sobre uma base de dados `academia_db`, com gerenciamento de informações de alunos e treinamentos.  
+Foi desenvolvido com as seguintes tecnologias:  
+- Linguagem: Java (IDE: NetBeans)  
+- Banco de dados: MySQL (via XAMPP ou servidor local)  
+- Conector JDBC: MySQL Connector/J  
+- Formato de data utilizado: `yyyy-MM-dd`
+
+## 🎯 Funcionalidades  
+- Adicionar, visualizar, alterar e remover registros de **Alunos**  
+- Adicionar, visualizar, alterar e remover registros de **Treinamentos**  
+- Interface gráfica simples para interação (GUI)  
+- Conexão e manipulação de base de dados MySQL  
+- Tratar datas no formato `yyyy-MM-dd`
+
+## 🧰 Pré-requisitos  
+Antes de executar o projeto, certifique-se de que você possui:  
+- Java JDK (ex: versão 24) instalada no sistema  
+- MySQL rodando localmente ou remotamente  
+- XAMPP ou outro ambiente para MySQL (opcional)  
+- MySQL Connector/J incluído no classpath do projeto  
+- Criação da base de dados `academia_db` e das tabelas necessárias (exemplo abaixo)
+
+## 🔧 Configuração da Base de Dados  
+Exemplo de comandos SQL para criação das tabelas (ajuste conforme o seu modelo):  
+```sql
+CREATE DATABASE academia_db;
+
+USE academia_db;
+
+CREATE TABLE aluno (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    data_nascimento DATE,
+    email VARCHAR(100)
+    -- outros campos conforme necessário
+);
+
+CREATE TABLE treinamento (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    data_inicio DATE,
+    data_fim DATE,
+    aluno_id INT,
+    FOREIGN KEY (aluno_id) REFERENCES aluno(id)
+    -- outros campos conforme necessário
+);
